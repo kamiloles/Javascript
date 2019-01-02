@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+
+<html lang="pl"> 
+
+<head>  
+ 
+</head>  
+<style >
+    #container {
+        background: green;
+        display: flex;
+        justify-content: center;
+    }
+    #slider {
+        margin: 10%;
+        overflow: hidden;
+        position: relative;
+    }
+    img {
+        height: 300px;
+        width: 300px;
+        position: relative;
+    }
+</style>
+<body> 
+
+<div id = "container" >
+    <div id = "slider" >
+        <img src = "https://picsum.photos/700/500/?random=1" alt="" >
+        <img src = "https://picsum.photos/700/500/?random=15" alt="" >
+        <img src = "https://picsum.photos/700/500/?random=1421" alt="" >
+        <img src = "https://picsum.photos/700/500/?random=1534" alt="" >
+    </div>
+</div>
+<script>
+    //Deklaracja zmiennej do sterowania animacj¹, uchwytów oraz odpalenie animacji
+    let animation = true;
+    let imgs = document.querySelectorAll( 'img' );
+    let slider = document.querySelector( '#slider' );
+    let container = document.querySelector( '#container' );
+    requestAnimationFrame( animate );
+    //Dodanie funkcji dla ka¿dego zdjêcia na powiêkszenie ka¿dego z nich po najechaniu myszk¹
+    imgs.forEach( ( img ) => {
+        img.addEventListener( 'mouseenter', getBigger );
+    })
+    //Deklaracja funkcji zwiêkszaj¹cej zdjêcie, klonowanie wybranego zdjêcia, wyrzucenie do rodzica, ukrycie slidera i dodanie funkcji do obrazku
+    function getBigger( event ){
+        animation = false;
+        slider.style.display = 'none';
+        let child = event.target.cloneNode();
+        child.style.width = '60%';
+        child.style.height = '60%';
+        child.style.left = 0;
+        child.addEventListener( 'mouseleave', restartAnimation );
+        container.appendChild(child);
+    }
+    //Deklaracja funkcji restartu animacji, usuniêcie zdjêcia zwiêkszonego, przywrócenie slidera
+    function restartAnimation( event ){
+        animation = true;
+        container.removeChild(container.children[1]);
+        slider.style.display = ''
+    }    
+    //Funkcja animacji
+    function animate(){
+        if ( animation ){
+            if ( imgs[0].style.left == '-1200px' ){
+                imgs[0].style.left = '1200px';
+            } else {
+                for( let x = 0; x < 4; x++){
+                imgs[x].style.left = (imgs[0].offsetLeft - 2) + 'px'; 
+            }
+        }
+        }
+        requestAnimationFrame( animate );
+    }
+</script>
+</body>  
+
+</html> 
