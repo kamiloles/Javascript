@@ -1,0 +1,32 @@
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .btn:hover {background: #eee;}
+  
+  .green {color: green;}
+  .red {color: red;}
+
+
+  body {
+    background-image: url("bc.jpg");
+  
+    background-color: #cccccc;
+   }
+
+
+   div{
+    text-align: center;
+    }
+    #my-text{
+    display: inline-block;
+    color: #ffffff;
+
+    background-color: #000000;
+    opacity: 0.8;
+    }

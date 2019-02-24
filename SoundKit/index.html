@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SoundKit</title>
+</head>
+<body>
+<center>
+
+    <h1 id="my-text">
+    <div class="keys">
+        <div data-key="84">
+            <button class="btn red"><b>T</b></button>
+            <span class="btn green">Bell sound</span>
+        </div>
+        <div class="keys">
+        <div data-key="89">
+            <button class="btn red"> <b>Y</b></button>
+            <span class="btn green">Eoh sound</span>
+        </div>
+        <div class="keys">
+                <div data-key="85">
+                    <button class="btn red"> <b>U</b></button>
+                    <span class="btn green">Giggle sound</span>
+                </div>
+        <div class="keys">
+        <div data-key="70">
+            <button class="btn red"> <b>F</b></button>
+            <span class="btn green">Glass sound</span>
+        </div>        
+        <div class="keys">
+                <div data-key="79">
+                    <button class="btn red"> <b>O</b></button>
+                    <span class="btn green">Zombie sound</span>
+                </div>
+    </div>
+
+    <div class="record-buttons">
+
+
+            <button id = "record1"><strong>Nagrywaj - kanal 1</strong></button>
+            <button id = "record2"><strong>Nagrywaj - kanal 2</strong></button>
+            <button id = "record3"><strong>Nagrywaj - kanal 3</strong></button>
+            <button id = "record4"><strong>Nagrywaj - kanal 4</strong></button>
+        </div>
+
+        <div class="stop-buttons">
+            <button id = "stop1"><strong>Stop nagrywania - kanal 1</strong></button>
+            <button id = "stop2"><strong>Stop nagrywania - kanal 2</strong></button>
+            <button id = "stop3"><strong>Stop nagrywania - kanal 3</strong></button>
+            <button id = "stop4"><strong>Stop nagrywania - kanal 4</strong></button>
+        </div>
+
+        <div class = "play-buttons">
+            <button id="play1"><strong>Odtwarzaj - kanal 1</strong></button>
+            <button id="play2"><strong>Odtwarzaj - kanal 2</strong></button>
+            <button id="play3"><strong>Odtwarzaj - kanal 3</strong></button>
+            <button id="play4"><strong>Odtwarzaj - kanal 4</strong></button>
+        </div>
+
+
+    <audio data-key="84" src="sound/bell.wav"></audio>
+    <audio data-key="89" src="sound/eoh.wav"></audio>
+    <audio data-key="85" src="sound/giggle.wav"></audio>
+    <audio data-key="70" src="sound/glass.wav"></audio>
+    <audio data-key="79" src="sound/zombie.wav"></audio>
+</h1>
+    <script src="script.js"></script>
+</center>
+</body>
+
+
+</html>
