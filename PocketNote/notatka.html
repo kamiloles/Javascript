@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NotePocket</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    </head>
+    <body>
+    <div class="titlebar"></div>
+    <div class="menu">
+      <div id="menubtn">&equiv;</div>
+      <div id="submenu">
+        <a href="#" id="newbtn">Nowa Notatka</a>
+        <a href="#" id="clsbtn">Zamknij wszystkie notatki</a>
+      </div>
+    </div>
+    <div id='notes'>
+        <div id="notezero"></div>
+    </div>
+    </body>
+	
+	
+	<script> 
+	
+    var cnt = 0;
+
+$(function() {
+    // menu dropdown
+    $("#menubtn").on("click", function() {
+        $("#submenu").slideToggle(100);
+    });
+// all submenu buttons 
+    $("#submenu a").on('click',function(){
+        $("#submenu").slideToggle(100);
+    });
+// submenu new button
+    $("#submenu #newbtn").on('click', function(){
+        var el = $("<div class='note'></div>").text("Notatka #"+($("#notezero") .siblings().length+1));
+        $(el).append("<button class='rem'>-</button>");
+        $(el).append("<hr/>");
+        $(el).append("<textarea class='txtinput'></textarea>");
+        $("#notes").append(el);
+        $(".rem").click(function(){
+            $(this).parent().remove();
+            cnt=$("#notezero") .siblings().length;
+            $(".titlebar").text(cnt+"x notatek na liście");
+       });
+       $(".titlebar").text((++cnt)+"x notatek na liście");
+    } );
+
+
+
+// close all menu button
+    $("#submenu #clsbtn").on("click",function()
+    {
+        $("#notezero").siblings().remove();
+        $(".titlebar").text("Brak otwartych notatek");
+        cnt = 0;
+    });
+
+}); 
+</script>
+
+<style>
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(250, 250, 250);
+}
+.titlebar {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    background-image: url(logo.png);
+    padding: 22px;
+    background-color: rgb(50, 184, 218);
+    float: left;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.3);
+}
+#menubtn {
+    background-color: rgb(50, 184, 218);
+    color: white;
+    padding: 7px 15px 6px 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    z-index: 4;
+    box-shadow: -2px 0px 2px 4px rgba(0,0.3,0,0.3);
+}
+#item:hover, #item:focus {
+    background-color: rgb(50, 184, 218);
+}
+.menu {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+#submenu {
+    display: none;
+    position: relative ;
+    left: 0px;
+    background-color: rgb(50, 184, 218);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2), 
+    inset 0px 4px 1px 1px rgba(0,0,0,0.3);
+    z-index: 4;
+}
+#submenu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#submenu a:hover {
+    background-color: rgb(50, 184, 218);
+}
+#notes {
+    position: absolute;
+    margin: 0px;
+    margin-top: 80px;
+    padding: 10px;
+    width: 100%;
+}
+#notes .note {
+    margin: 6px;
+    width: 88%;
+    padding: 8px;
+    color: #f5f5f5;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0.2,0,0,0.6);
+    border-radius: 1px;
+    box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+.rem {
+    color: rgb(255, 255, 255);
+    float: right;
+    padding: 1px 7px;
+    background-color: #fc3333;
+    border-radius: 2px;
+    border-width: 0px;
+    font-weight: bold;
+    text-shadow: 0px 0px px black;
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+}
+.rem:hover {
+    background-color: #50798b;
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.4);
+}
+.note hr {
+    margin: 2px;
+    padding: 0px;
+    
+    border-color: rgb(50, 184, 218);
+}
+.txtinput {
+    color: #eed;
+    border: 1px solid #300;
+    font-size: 18px;
+    font-family: sans-serif;
+    background-color: rgb(19, 20, 19);
+    width: 98%;
+    min-height: 75px;
+    max-height: 125px;
+    overflow: auto;
+    border-radius: 0px 0p 4px 4px;
+    
+}
+</style>
+
+</html>
